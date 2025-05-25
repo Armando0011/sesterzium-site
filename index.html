@@ -68,7 +68,7 @@
       <li>🔸 70% Liquidity Pool (LP)</li>
       <li>🔸 20% Marketing</li>
       <li>🔸 10% Developers</li>
-    </ul><p style='margin-top:1rem;color:#fde68a;font-style:italic;'>🔒 LP e 10% dei token (dev) sono bloccati per 6 mesi.</p>
+    </ul><p id='tokenomics-lock' style='margin-top:1rem;color:#fde68a;font-style:italic;'>🔒 LP e 10% dei token (dev) sono bloccati per 6 mesi.</p>
   
   </section>
 
@@ -88,99 +88,121 @@
     <p id="tax-desc">1% to LP, 1% to burn</p>
   </section>
 
+
 <script>
   const translations = {
     en: {
       tokenomics: "Tokenomics",
-      tokenList: ["🔸 70% Liquidity Pool (LP)", "🔸 20% Marketing", "🔸 10% Developers"],
+      tokenList: [
+        "🔸 70% Liquidity Pool (LP)",
+        "🔸 20% Marketing",
+        "🔸 10% Developers"
+      ],
+      lockInfo: "🔒 LP and 10% of tokens (dev) are locked for 6 months.",
       tax: "Sell Tax",
       taxDesc: "1% to LP, 1% to burn",
-    roadmap: "Roadmap",
-    
-    faq: "FAQ",
-    faqList: [
-      ["Is Sesterzium a scam?", "No, it’s a transparent and satirical project."],
-      ["Where can I buy it?", "On DEXs on the Base network."],
-      ["Why Latin?", "Every empire has its own language."]
-    ],
-roadmapList: [
-      "Q2 2025 – Site launch and LP creation",
-      "Q3 2025 – Strong marketing via meme community",
-      "Q4 2025 – First listing on minor CEX",
-      "Q1 2026 – Strategic partnerships and aggregators",
-      "Q2 2026 – Listing on mid-to-high tier CEX"
-    ],
-
+      roadmap: "Roadmap",
+      roadmapList: [
+        "Q2 2025 – Site launch and LP creation",
+        "Q3 2025 – Strong marketing via meme community",
+        "Q4 2025 – First listing on minor CEX",
+        "Q1 2026 – Strategic partnerships and aggregators",
+        "Q2 2026 – Listing on mid-to-high tier CEX"
+      ],
+      faq: "FAQ",
+      faqList: [
+        ["Is Sesterzium a scam?", "No, it’s a transparent and satirical project."],
+        ["Where can I buy it?", "On DEXs on the Base network."],
+        ["Why Latin?", "Every empire has its own language."]
+      ]
     },
     cn: {
       tokenomics: "代币经济",
-      tokenList: ["🔸 70% 流动性池", "🔸 20% 市场营销", "🔸 10% 开发团队"],
+      tokenList: [
+        "🔸 70% 流动性池",
+        "🔸 20% 市场营销",
+        "🔸 10% 开发团队"
+      ],
+      lockInfo: "🔒 LP 和 10% 的代币（开发者）锁定 6 个月。",
       tax: "卖出税",
-      taxDesc: "1% 给LP，1% 烧毁",
+      taxDesc: "1% 给 LP，1% 销毁",
+      roadmap: "路线图",
+      roadmapList: [
+        "2025年第二季度 – 网站启动和LP创建",
+        "2025年第三季度 – 社交媒体和表情包社区的强力营销",
+        "2025年第四季度 – 在小型CEX首次上线",
+        "2026年第一季度 – 战略合作伙伴和聚合器",
+        "2026年第二季度 – 上线中高端CEX"
+      ],
+      faq: "常见问题",
+      faqList: [
+        ["Sesterzium 是骗局吗？", "不是。这是一个透明和讽刺性的项目。"],
+        ["在哪里可以买？", "在 Base 网络上的 DEX。"],
+        ["为何使用拉丁语？", "每个帝国都有自己的官方语言。"]
+      ]
     },
     kr: {
       tokenomics: "토크노믹스",
-      tokenList: ["🔸 70% 유동성 풀", "🔸 20% 마케팅", "🔸 10% 개발자"],
+      tokenList: [
+        "🔸 70% 유동성 풀",
+        "🔸 20% 마케팅",
+        "🔸 10% 개발자"
+      ],
+      lockInfo: "🔒 LP 및 10% 토큰(개발자)은 6개월 동안 잠김.",
       tax: "판매세",
       taxDesc: "1% LP, 1% 소각",
+      roadmap: "로드맵",
+      roadmapList: [
+        "2025년 2분기 – 사이트 출시 및 LP 생성",
+        "2025년 3분기 – 밈 커뮤니티 중심의 마케팅",
+        "2025년 4분기 – 소형 CEX에 첫 상장",
+        "2026년 1분기 – 전략적 파트너십 및 애그리게이터",
+        "2026년 2분기 – 중대형 CEX에 상장"
+      ],
+      faq: "자주 묻는 질문",
+      faqList: [
+        ["Sesterzium은 사기인가요?", "아니요. 투명하고 풍자적인 프로젝트입니다."],
+        ["어디서 구매하나요?", "Base 네트워크의 DEX에서 구매할 수 있습니다."],
+        ["왜 라틴어를 쓰나요?", "모든 제국은 고유한 언어를 가지고 있습니다."]
+      ]
     }
   };
 
   function setLang(lang) {
-    document.getElementById('tokenomics-title').innerText = translations[lang].tokenomics;
-    const list = document.getElementById('tokenomics-list');
-    list.innerHTML = "";
-    translations[lang].tokenList.forEach(item => {
+    const t = translations[lang];
+    document.getElementById('tokenomics-title').innerText = t.tokenomics;
+
+    const tokenList = document.getElementById('tokenomics-list');
+    tokenList.innerHTML = "";
+    t.tokenList.forEach(text => {
+      const li = document.createElement('li');
+      li.textContent = text;
+      tokenList.appendChild(li);
+    });
+    document.getElementById('tokenomics-lock').innerText = t.lockInfo;
+
+    document.getElementById('tax-title').innerText = t.tax;
+    document.getElementById('tax-desc').innerText = t.taxDesc;
+
+    document.getElementById('roadmap-title').innerText = t.roadmap;
+    const roadmapList = document.getElementById('roadmap-list');
+    roadmapList.innerHTML = "";
+    t.roadmapList.forEach(item => {
       const li = document.createElement('li');
       li.textContent = item;
-      list.appendChild(li);
+      roadmapList.appendChild(li);
     });
-    document.getElementById('tax-title').innerText = translations[lang].tax;
-    document.getElementById('tax-desc').innerText = translations[lang].taxDesc;
-    document.getElementById('roadmap-title').innerText = translations[lang].roadmap;
-    document.getElementById('faq-title').innerText = translations[lang].faq;
-    const faqlist = document.getElementById('faq-list');
-    faqlist.innerHTML = "";
-    translations[lang].faqList.forEach(([q, a]) => {
+
+    document.getElementById('faq-title').innerText = t.faq;
+    const faqList = document.getElementById('faq-list');
+    faqList.innerHTML = "";
+    t.faqList.forEach(([q, a]) => {
       const li = document.createElement('li');
       li.innerHTML = `<strong>${q}</strong> ${a}`;
-      faqlist.appendChild(li);
-    });
-    const rlist = document.getElementById('roadmap-list');
-    rlist.innerHTML = "";
-    translations[lang].roadmapList.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      rlist.appendChild(li);
+      faqList.appendChild(li);
     });
   }
+
+  // Default language
+  setLang('en');
 </script>
-
-  <section id="faq">
-    <h2 id="faq-title">FAQ</h2>
-    <ul id="faq-list" style="text-align:left; max-width:600px; margin:1rem auto; padding-left:1rem;">
-      <li><strong>Sesterzium è uno scam?</strong> No, è un progetto trasparente e satirico.</li>
-      <li><strong>Dove si compra?</strong> Su DEX della rete Base.</li>
-      <li><strong>Perché il latino?</strong> Ogni impero ha la sua lingua.</li>
-    </ul>
-  </section>
-
-  <section id="chart">
-    <h2 style="margin-bottom:1rem;">Tokenomics Chart</h2>
-    <img src="https://via.placeholder.com/400x300.png?text=Tokenomics+Pie+Chart" alt="Tokenomics Chart" style="max-width:100%; height:auto; border:2px solid #fde68a; border-radius:1rem;">
-  </section>
-
-  <section id="social">
-    <h2>Follow Us</h2>
-    <div style="margin-top:1rem;">
-      <a href="#" style="margin:0 1rem; text-decoration:none; background:#1DA1F2; color:white; padding:0.75rem 1.5rem; border-radius:9999px; display:inline-block;">Twitter</a>
-      <a href="#" style="margin:0 1rem; text-decoration:none; background:#0088cc; color:white; padding:0.75rem 1.5rem; border-radius:9999px; display:inline-block;">Telegram</a>
-    </div>
-  </section>
-
-  <section id="whitepaper">
-    <h2>Whitepaper</h2>
-    <p><a href="#" style="color:#fde68a; text-decoration:underline;">Scarica il whitepaper (prossimamente)</a></p>
-  </section>
-</body>
-</html>
