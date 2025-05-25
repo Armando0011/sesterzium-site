@@ -19,9 +19,6 @@
       font-size: 3rem;
       font-weight: bold;
     }
-    .buttons {
-      margin-top: 1rem;
-    }
     .buttons a {
       display: inline-block;
       margin: 0 1rem;
@@ -32,16 +29,87 @@
       border-radius: 2rem;
       text-decoration: none;
     }
+    section {
+      padding: 2rem 0;
+      border-top: 1px solid #7f1d1d;
+      margin-top: 2rem;
+    }
+    .lang-btn {
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      background: #facc15;
+      color: #450a0a;
+      font-weight: bold;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <img src="favicon.png" alt="Sesterzium" style="width:150px;height:150px;border-radius:9999px;box-shadow:0 0 15px black;"/>
   <h1>Sesterzium</h1>
   <p><em>Panem, Circenses et Pump</em></p>
-  <p><em style="color:#fde68a;">Manus adamantinae sunt virtus legionarii. Vendere est proditio.</em></p>
+  <p id="slogan" style="color:#fde68a;">Manus adamantinae sunt virtus legionarii. Vendere est proditio.</p>
+
   <div class="buttons">
     <a href="#">Buy Now</a>
     <a href="#">View on BaseScan</a>
   </div>
+
+  <div style="margin-top: 1.5rem;">
+    <span class="lang-btn" onclick="setLang('en')">🇬🇧</span>
+    <span class="lang-btn" onclick="setLang('cn')">🇨🇳</span>
+    <span class="lang-btn" onclick="setLang('kr')">🇰🇷</span>
+  </div>
+
+  <section id="tokenomics">
+    <h2 id="tokenomics-title">Tokenomics</h2>
+    <ul id="tokenomics-list" style="list-style: none; padding: 0;">
+      <li>🔸 70% Liquidity Pool (LP)</li>
+      <li>🔸 20% Marketing</li>
+      <li>🔸 10% Developers</li>
+    </ul>
+  </section>
+
+  <section id="tax">
+    <h2 id="tax-title">Sell Tax</h2>
+    <p id="tax-desc">1% to LP, 1% to burn</p>
+  </section>
+
+<script>
+  const translations = {
+    en: {
+      tokenomics: "Tokenomics",
+      tokenList: ["🔸 70% Liquidity Pool (LP)", "🔸 20% Marketing", "🔸 10% Developers"],
+      tax: "Sell Tax",
+      taxDesc: "1% to LP, 1% to burn",
+    },
+    cn: {
+      tokenomics: "代币经济",
+      tokenList: ["🔸 70% 流动性池", "🔸 20% 市场营销", "🔸 10% 开发团队"],
+      tax: "卖出税",
+      taxDesc: "1% 给LP，1% 烧毁",
+    },
+    kr: {
+      tokenomics: "토크노믹스",
+      tokenList: ["🔸 70% 유동성 풀", "🔸 20% 마케팅", "🔸 10% 개발자"],
+      tax: "판매세",
+      taxDesc: "1% LP, 1% 소각",
+    }
+  };
+
+  function setLang(lang) {
+    document.getElementById('tokenomics-title').innerText = translations[lang].tokenomics;
+    const list = document.getElementById('tokenomics-list');
+    list.innerHTML = "";
+    translations[lang].tokenList.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      list.appendChild(li);
+    });
+    document.getElementById('tax-title').innerText = translations[lang].tax;
+    document.getElementById('tax-desc').innerText = translations[lang].taxDesc;
+  }
+</script>
 </body>
 </html>
