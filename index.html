@@ -110,7 +110,9 @@
         "Q2 2026 – Listing on mid-to-high tier CEX"
       ],
       faq: "FAQ",
-      faqList: [
+      
+      chartNote: "🔒 LP and Developer tokens are locked for 6 months.",
+faqList: [
         ["Is Sesterzium a scam?", "No, it’s a transparent and satirical project."],
         ["Where can I buy it?", "On DEXs on the Base network."],
         ["Why Latin?", "Every empire has its own language."]
@@ -135,7 +137,9 @@
         "2026年第二季度 – 上线中高端CEX"
       ],
       faq: "常见问题",
-      faqList: [
+      
+      chartNote: "🔒 LP and Developer tokens are locked for 6 months.",
+faqList: [
         ["Sesterzium 是骗局吗？", "不是。这是一个透明和讽刺性的项目。"],
         ["在哪里可以买？", "在 Base 网络上的 DEX。"],
         ["为何使用拉丁语？", "每个帝国都有自己的官方语言。"]
@@ -160,7 +164,9 @@
         "2026년 2분기 – 중대형 CEX에 상장"
       ],
       faq: "자주 묻는 질문",
-      faqList: [
+      
+      chartNote: "🔒 LP and Developer tokens are locked for 6 months.",
+faqList: [
         ["Sesterzium은 사기인가요?", "아니요. 투명하고 풍자적인 프로젝트입니다."],
         ["어디서 구매하나요?", "Base 네트워크의 DEX에서 구매할 수 있습니다."],
         ["왜 라틴어를 쓰나요?", "모든 제국은 고유한 언어를 가지고 있습니다."]
@@ -194,6 +200,7 @@
     });
 
     document.getElementById('faq-title').innerText = t.faq;
+    document.getElementById('chart-note').innerText = t.chartNote;
     const faqList = document.getElementById('faq-list');
     faqList.innerHTML = "";
     t.faqList.forEach(([q, a]) => {
