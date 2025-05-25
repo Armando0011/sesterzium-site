@@ -68,7 +68,19 @@
       <li>🔸 70% Liquidity Pool (LP)</li>
       <li>🔸 20% Marketing</li>
       <li>🔸 10% Developers</li>
-    </ul>
+    </ul><p style='margin-top:1rem;color:#fde68a;font-style:italic;'>🔒 LP e 10% dei token (dev) sono bloccati per 6 mesi.</p>
+  
+  </section>
+
+  <section id="roadmap">
+    <h2 id="roadmap-title">Roadmap</h2>
+    <ol id="roadmap-list" style="text-align:left; max-width:600px; margin:1rem auto; padding-left:1rem;">
+      <li>Q2 2025 – Lancio del sito e creazione LP</li>
+      <li>Q3 2025 – Marketing spinto su social e meme community</li>
+      <li>Q4 2025 – Prima quotazione su CEX minore</li>
+      <li>Q1 2026 – Partnership strategiche e aggregatori</li>
+      <li>Q2 2026 – Quotazione su CEX medio-alto</li>
+    </ol>
   </section>
 
   <section id="tax">
@@ -83,6 +95,22 @@
       tokenList: ["🔸 70% Liquidity Pool (LP)", "🔸 20% Marketing", "🔸 10% Developers"],
       tax: "Sell Tax",
       taxDesc: "1% to LP, 1% to burn",
+    roadmap: "Roadmap",
+    
+    faq: "FAQ",
+    faqList: [
+      ["Is Sesterzium a scam?", "No, it’s a transparent and satirical project."],
+      ["Where can I buy it?", "On DEXs on the Base network."],
+      ["Why Latin?", "Every empire has its own language."]
+    ],
+roadmapList: [
+      "Q2 2025 – Site launch and LP creation",
+      "Q3 2025 – Strong marketing via meme community",
+      "Q4 2025 – First listing on minor CEX",
+      "Q1 2026 – Strategic partnerships and aggregators",
+      "Q2 2026 – Listing on mid-to-high tier CEX"
+    ],
+
     },
     cn: {
       tokenomics: "代币经济",
@@ -109,7 +137,50 @@
     });
     document.getElementById('tax-title').innerText = translations[lang].tax;
     document.getElementById('tax-desc').innerText = translations[lang].taxDesc;
+    document.getElementById('roadmap-title').innerText = translations[lang].roadmap;
+    document.getElementById('faq-title').innerText = translations[lang].faq;
+    const faqlist = document.getElementById('faq-list');
+    faqlist.innerHTML = "";
+    translations[lang].faqList.forEach(([q, a]) => {
+      const li = document.createElement('li');
+      li.innerHTML = `<strong>${q}</strong> ${a}`;
+      faqlist.appendChild(li);
+    });
+    const rlist = document.getElementById('roadmap-list');
+    rlist.innerHTML = "";
+    translations[lang].roadmapList.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      rlist.appendChild(li);
+    });
   }
 </script>
+
+  <section id="faq">
+    <h2 id="faq-title">FAQ</h2>
+    <ul id="faq-list" style="text-align:left; max-width:600px; margin:1rem auto; padding-left:1rem;">
+      <li><strong>Sesterzium è uno scam?</strong> No, è un progetto trasparente e satirico.</li>
+      <li><strong>Dove si compra?</strong> Su DEX della rete Base.</li>
+      <li><strong>Perché il latino?</strong> Ogni impero ha la sua lingua.</li>
+    </ul>
+  </section>
+
+  <section id="chart">
+    <h2 style="margin-bottom:1rem;">Tokenomics Chart</h2>
+    <img src="https://via.placeholder.com/400x300.png?text=Tokenomics+Pie+Chart" alt="Tokenomics Chart" style="max-width:100%; height:auto; border:2px solid #fde68a; border-radius:1rem;">
+  </section>
+
+  <section id="social">
+    <h2>Follow Us</h2>
+    <div style="margin-top:1rem;">
+      <a href="#" style="margin:0 1rem; text-decoration:none; background:#1DA1F2; color:white; padding:0.75rem 1.5rem; border-radius:9999px; display:inline-block;">Twitter</a>
+      <a href="#" style="margin:0 1rem; text-decoration:none; background:#0088cc; color:white; padding:0.75rem 1.5rem; border-radius:9999px; display:inline-block;">Telegram</a>
+    </div>
+  </section>
+
+  <section id="whitepaper">
+    <h2>Whitepaper</h2>
+    <p><a href="#" style="color:#fde68a; text-decoration:underline;">Scarica il whitepaper (prossimamente)</a></p>
+  </section>
 </body>
 </html>
